@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600&family=Geist:wght@400;600;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-surface-base: oklch(0.99 0.002 0);
+  --color-text-primary: oklch(0.18 0.01 255);
+  --color-text-secondary: oklch(0.45 0.01 255);
+  --color-accent-primary: oklch(0.42 0.15 250);
+  --color-accent-glow: oklch(0.42 0.15 250 / 0.08);
+  
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+}
+
+@layer base {
+  :root {
+    /* Base Surface: Clean Paper White */
+    --surface-base: oklch(0.99 0.002 0);
+    
+    /* Liquid Frosted Glass Specs (Light Mode Optimized) */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-blur: blur(20px);
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --glass-specular: inset 0 1px 1px rgba(255, 255, 255, 0.8), 
+                       0 8px 30px rgba(0, 0, 0, 0.04);
+
+    /* Typography Color Engine */
+    --text-primary: oklch(0.18 0.01 255);
+    --text-secondary: oklch(0.45 0.01 255);
+    
+    /* Brand Accent: Royal Ink Blue */
+    --accent-primary: oklch(0.42 0.15 250);
+    --accent-glow: oklch(0.42 0.15 250 / 0.08);
+  }
+
+  body {
+    background-color: var(--surface-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Frosted Glass Component Styling */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-specular);
+  border-radius: 16px;
+}
+
+/* Double-Layer Bevel Edges (Light Mode) */
+.glass-bevel {
+  position: relative;
+}
+
+.glass-bevel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.03));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Typography Layer Tuning for Light Backgrounds */
+.glass-text-rendering {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Typography Application Rules */
+.hero-heading {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.04em; /* Ultra-tight kerning for high-end impact */
+  line-height: 1.05;
+}
+
+.glass-meta {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.15em; /* Expanded tracking for readability over glass borders */
+  text-transform: uppercase;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-base);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Subtle Ink Bleed Backdrops */
+.glow-accent {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  filter: blur(140px);
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
