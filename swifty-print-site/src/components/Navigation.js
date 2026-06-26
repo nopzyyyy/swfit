@@ -1,59 +1,109 @@
-import { Icons } from '../icons/CustomIcons.js';
-
 export function Navigation() {
   return `
-    <header class="fixed top-4 md:top-6 left-0 right-0 z-50 px-3 md:px-8 flex justify-center">
-      <nav id="nav-capsule" class="w-full max-w-5xl glass-panel glass-bevel py-2.5 px-4 md:py-3 md:px-6 flex items-center justify-between transition-all duration-300 ease-out glass-text-rendering shadow-md">
-        <!-- Brand Logo / Signifier -->
-        <a href="#" class="flex items-center gap-2 md:gap-3 group text-text-primary hover:text-accent-primary transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary rounded-lg p-1">
-          ${Icons.logo("w-7 h-7 md:w-8 md:h-8 text-accent-primary")}
-          <span class="font-sans font-bold tracking-tight text-base md:text-lg">
-            SWIFTY<span class="text-accent-primary">PRINT</span>
-          </span>
-        </a>
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-[1440px] rounded-full border-[0.5px] border-accent-gold/30 bg-surface-base/40 backdrop-blur-[28px] flex justify-between items-center px-4 sm:px-6 md:px-8 py-3 md:py-4 z-50 transition-all duration-500">
+      <a href="#" class="font-headline-sm text-[16px] sm:text-[20px] md:text-headline-sm uppercase tracking-[0.2em] text-text-primary hover:opacity-80 transition-opacity whitespace-nowrap">
+        BEE ONE MARKET
+      </a>
+      
+      <!-- Desktop Navigation links -->
+      <div class="hidden md:flex gap-8 lg:gap-10 items-center">
+        <a class="nav-link font-label-md text-label-md uppercase tracking-widest text-accent-gold border-b border-accent-gold pb-1 transition-all duration-300" href="#curation">Curation</a>
+        <a class="nav-link font-label-md text-label-md uppercase tracking-widest text-text-secondary hover:text-text-primary transition-colors duration-300" href="#provenance">Provenance</a>
+        <a class="nav-link font-label-md text-label-md uppercase tracking-widest text-text-secondary hover:text-text-primary transition-colors duration-300" href="#local-feed">Local Feed</a>
+        <a class="nav-link font-label-md text-label-md uppercase tracking-widest text-text-secondary hover:text-text-primary transition-colors duration-300" href="#coordinates">Coordinates</a>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <button class="hidden sm:block bg-accent-moss/20 hover:bg-accent-moss/40 border border-accent-moss/30 px-6 py-2 rounded-full font-label-md text-label-md uppercase tracking-widest text-accent-gold transition-all duration-300 hover:scale-[0.98] active:scale-95">
+          Secure Milk Subscription
+        </button>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-8 h-8 rounded-full border border-accent-gold/30 text-accent-gold hover:bg-accent-moss/20 transition-all duration-300 active:scale-90">
+          <span class="material-symbols-outlined text-[20px]">menu</span>
+        </button>
+      </div>
+    </nav>
 
-        <!-- Semantic Anchor List -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#capabilities" class="text-sm font-sans font-semibold tracking-wide text-text-secondary hover:text-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary rounded px-2 py-1">
-            Capabilities
-          </a>
-          <a href="#reviews" class="text-sm font-sans font-semibold tracking-wide text-text-secondary hover:text-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary rounded px-2 py-1">
-            Feedback
-          </a>
-          <a href="#operations" class="text-sm font-sans font-semibold tracking-wide text-text-secondary hover:text-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary rounded px-2 py-1">
-            Gateway
-          </a>
-        </div>
-
-        <!-- High-Intent CTA (Responsive Dimensions) -->
-        <div>
-          <a href="#contact" class="relative group inline-flex items-center justify-center py-1.5 px-4 md:py-2.5 md:px-6 rounded-full overflow-hidden text-[10px] md:text-xs font-mono font-semibold tracking-wider md:tracking-widest text-white bg-accent-primary hover:bg-accent-primary/90 transition-all duration-300 shadow-md shadow-accent-primary/10 focus:outline-none focus:ring-2 focus:ring-accent-primary">
-            <span class="relative z-10 uppercase flex items-center gap-1.5">
-              Start Project
-              <span class="group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
-            </span>
-          </a>
-        </div>
-      </nav>
-    </header>
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-drawer" class="fixed inset-0 bg-background/95 backdrop-blur-md z-40 transform translate-x-full transition-transform duration-500 flex flex-col justify-center items-center gap-8 md:hidden">
+      <button id="close-drawer-btn" class="absolute top-6 right-6 w-10 h-10 rounded-full border border-accent-gold/30 text-accent-gold flex items-center justify-center hover:bg-accent-moss/20 transition-all duration-300 active:scale-90">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+      <a class="mobile-nav-link font-headline-lg text-headline-lg uppercase text-text-secondary hover:text-accent-gold transition-colors" href="#curation">Curation</a>
+      <a class="mobile-nav-link font-headline-lg text-headline-lg uppercase text-text-secondary hover:text-accent-gold transition-colors" href="#provenance">Provenance</a>
+      <a class="mobile-nav-link font-headline-lg text-headline-lg uppercase text-text-secondary hover:text-accent-gold transition-colors" href="#local-feed">Local Feed</a>
+      <a class="mobile-nav-link font-headline-lg text-headline-lg uppercase text-text-secondary hover:text-accent-gold transition-colors" href="#coordinates">Coordinates</a>
+      
+      <button class="mt-8 bg-accent-moss/20 hover:bg-accent-moss/40 border border-accent-moss/30 px-8 py-3 rounded-full font-label-md text-label-md uppercase tracking-widest text-accent-gold transition-all duration-300 active:scale-95">
+        Secure Milk Subscription
+      </button>
+    </div>
   `;
 }
 
 export function initNavigation() {
-  const navCapsule = document.getElementById('nav-capsule');
-  if (!navCapsule) return;
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('close-drawer-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
+  if (menuBtn && drawer && closeBtn) {
+    menuBtn.addEventListener('click', () => {
+      drawer.classList.remove('translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.add('translate-x-full');
+    });
+
+    // Close drawer on clicking link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.add('translate-x-full');
+      });
+    });
+  }
+
+  // Active state for navigation links on scroll/click
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      navLinks.forEach(l => {
+        l.classList.remove('text-accent-gold', 'border-b', 'border-accent-gold', 'pb-1');
+        l.classList.add('text-text-secondary');
+      });
+      link.classList.remove('text-text-secondary');
+      link.classList.add('text-accent-gold', 'border-b', 'border-accent-gold', 'pb-1');
+    });
+  });
+
+  // Handle active states on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navCapsule.classList.remove('py-2.5', 'px-4', 'md:py-3', 'md:px-6', 'max-w-5xl');
-      navCapsule.classList.add('py-2', 'px-4', 'max-w-4xl', 'shadow-lg', 'bg-white/80');
-      navCapsule.parentElement.classList.remove('top-4', 'md:top-6');
-      navCapsule.parentElement.classList.add('top-2');
-    } else {
-      navCapsule.classList.remove('py-2', 'px-4', 'max-w-4xl', 'shadow-lg', 'bg-white/80');
-      navCapsule.classList.add('py-2.5', 'px-4', 'md:py-3', 'md:px-6', 'max-w-5xl');
-      navCapsule.parentElement.classList.remove('top-2');
-      navCapsule.parentElement.classList.add('top-4', 'md:top-6');
+    const sections = ['curation', 'provenance', 'local-feed', 'coordinates'];
+    let current = '';
+    
+    sections.forEach(sectionId => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          current = sectionId;
+        }
+      }
+    });
+
+    if (current) {
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === `#${current}`) {
+          link.classList.remove('text-text-secondary');
+          link.classList.add('text-accent-gold', 'border-b', 'border-accent-gold', 'pb-1');
+        } else {
+          link.classList.remove('text-accent-gold', 'border-b', 'border-accent-gold', 'pb-1');
+          link.classList.add('text-text-secondary');
+        }
+      });
     }
   });
 }
